@@ -14,6 +14,12 @@
 */
 
 /** @type {typeof import('@adonisjs/framework/src/Route/Manager')} */
-const Route = use('Route')
+const Route = use('Route');
+const Tariff = use('App/Models/Tariff');
+const License = use('App/Models/License');
 
-Route.on('/').render('welcome')
+Route.on('/').render('welcome');
+
+Route.get('/tariff/:id', async ({params}) => {
+  return await Tariff.getById(params.id);
+});
